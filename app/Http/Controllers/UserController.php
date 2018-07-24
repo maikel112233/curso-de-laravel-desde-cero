@@ -7,10 +7,14 @@ class UserController extends Controller
 	
     public function index()
     {
-        $users=['Joel','Ellie','Tess','Tommy','Bill','<script>alert("Clicker")</script>'];
+	if (request()->has('empty')){
+	    $users= [];
+	}else{
+            $users=['Joel','Ellie','Tess','Tommy','Bill','<script>alert("Clicker")</script>'];
+        }
 	$hola="hola";
         //dd(compact('users','hola'));
-        return view('users',['users'=>$users,'title'=>" el listado"]);
+		return view('users.index',['users'=>$users,'title'=>" el listado"]);
     }
     public function show($id)
     {
